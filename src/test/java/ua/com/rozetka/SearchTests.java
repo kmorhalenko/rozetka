@@ -26,6 +26,7 @@ public class SearchTests extends CommonElements {
     @Step("First step")
     public void searchIphone() {
         open(baseUrl);
+
     }
 
 
