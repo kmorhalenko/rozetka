@@ -1,42 +1,36 @@
 package ua.com.rozetka;
 
-import com.codeborne.selenide.Configuration;
-import io.qameta.allure.Step;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import io.qameta.allure.junit4.DisplayName;
-
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import ua.com.rozetka.Steps.CommonElements;
+import ua.com.rozetka.Steps.Steps;
 
 
 public class SearchTests extends CommonElements {
-    String baseUrl = Configuration.baseUrl;
+    Steps steps = new Steps();
 
     @BeforeClass
-    public static void setUpppp() {
+    public static void setSettings() {
         setUp();
     }
 
 
-
     @Test
-    @DisplayName("214234234")
-    @Step("First step")
+    @DisplayName("Buy iPhone")
     public void searchIphone() {
-        open(baseUrl);
+        steps.openHomePage();
+        steps.enterToTheSearchFieltText("Iphone");
+        steps.selectDropdownItemOfMainSearchByText("iphone xr");
+        steps.chooseFirstItemOfSearchResult();
+        steps.changeColourTo(0,0,0);
+        steps.clickButtonByName("Купить");
+        steps.popupWithNameShouldBeOpen("Вы добавили товар в корзину");
+        steps.closePopup();
+        steps.popupWithNameShouldBeClosed("Вы добавили товар в корзину");
+
 
     }
 
-
-
-    @Test
-    public void searshFieldTest() {
-        open(baseUrl);
-        $(By.name("search")).setValue("Iphone");
-        $(By.xpath("//button[@class='button button_color_green button_size_medium search-form__submit']")).shouldBe(visible).click();
-
-    }
 
 }
