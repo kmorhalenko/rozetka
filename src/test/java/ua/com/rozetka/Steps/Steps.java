@@ -74,7 +74,6 @@ public class Steps extends CommonElements {
     @Step
     public void openBasket() {
         clickOnElementByXpath(Locators.BASKET_ITEM);
-
     }
 
     @Step
