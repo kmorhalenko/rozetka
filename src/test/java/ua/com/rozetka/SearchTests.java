@@ -17,10 +17,10 @@ public class SearchTests extends CommonElements {
 
 
     @Test
-    @DisplayName("Buy iPhone")
-    public void searchIphone() {
+    @DisplayName("Путь джедая для покупки айфон")
+    public void searchAndBuyIphone() {
         steps.openHomePage();
-        steps.enterToTheSearchFieltText("Iphone");
+        steps.enterToTheSearchFieldText("Iphone");
         steps.selectDropdownItemOfMainSearchByText("iphone xr");
         steps.chooseFirstItemOfSearchResult();
         steps.changeColourTo(0,0,0);
@@ -28,9 +28,10 @@ public class SearchTests extends CommonElements {
         steps.popupWithNameShouldBeOpen("Вы добавили товар в корзину");
         steps.closePopup();
         steps.popupWithNameShouldBeClosed("Вы добавили товар в корзину");
-
-
+        steps.basketCounterIsAppeared();
+        steps.openBasket();
+        steps.popupWithNameShouldBeOpen("Корзина");
+        steps.basketShouldHaveProduct("iPhone Xr");
     }
-
 
 }
